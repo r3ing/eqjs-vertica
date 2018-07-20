@@ -1,0 +1,696 @@
+﻿<DataModel name="New data model" formatVersion="13" modelVersion="2" defQuery="" id="a72390b5-c5bf-44d5-b36f-8bc9b87b07c6">
+  <Description />
+  <CustomInfo />
+  <DMEOptions>
+    <listBoxTablesWidth>279</listBoxTablesWidth>
+    <FormWidth>880</FormWidth>
+    <FormHeight>577</FormHeight>
+  </DMEOptions>
+  <DBParams>
+    <SqlDialect>ANSI SQL</SqlDialect>
+    <ConnectionString>Dsn=Vertica;Driver={Vertica};autocommit=1;columnsaschar=0;connectionloadbalance=0;convertsquarebracketidentifiers=0;database=switch;description=Vertica;directbatchinsert=0;driverstringconversions=OUTPUT;enforcebatchinsertnullconstraints=0;ispasswordencrypted=0;kerberosservicename=vertica;locale={en_US@collation=binary};port=5433;preferredaddressfamily=none;promptonnopassword=0;pwd_={X4rg#mV?G%h9&amp;-Jq};readonly=0;resultbuffersize=131072;servername=10.0.31.122;sslmode=prefer;threepartnaming=1;transactionisolation=Server Default;uid=readOnly;windowsauthentication=0;pwd={X4rg#mV?G%h9&amp;-Jq}</ConnectionString>
+    <LoginPrompt>False</LoginPrompt>
+    <GateClass>Korzh.EasyQuery.DataGates.OdbcGate</GateClass>
+  </DBParams>
+  <Tables>
+    <Table class="db" alias="DOTACION" schema="" db="" dsgnLayout="" priority="1000" name="DOTACION" hints="" quote="False" />
+    <Table class="db" alias="PRODUCTOS" schema="" db="" dsgnLayout="" priority="1000" name="PRODUCTOS" hints="" quote="False" />
+    <Table class="db" alias="SUCURSALES" schema="" db="" dsgnLayout="" priority="1000" name="SUCURSALES" hints="" quote="False" />
+    <Table class="db" alias="TRX_CABECERA" schema="" db="" dsgnLayout="" priority="1000" name="TRX_CABECERA" hints="" quote="False" />
+    <Table class="db" alias="TRX_DETALLE" schema="" db="" dsgnLayout="" priority="1000" name="TRX_DETALLE" hints="" quote="False" />
+    <Table class="db" alias="TRX_MEDIO_PAGO" schema="" db="" dsgnLayout="" priority="1000" name="TRX_MEDIO_PAGO" hints="" quote="False" />
+    <Table class="db" alias="TRX_PERFIL_DESCTO_BDT" schema="" db="" dsgnLayout="" priority="1000" name="TRX_PERFIL_DESCTO_BDT" hints="" quote="False" />
+    <Table class="db" alias="TRX_PROMOCIONES" schema="" db="" dsgnLayout="" priority="1000" name="TRX_PROMOCIONES" hints="" quote="False" />
+  </Tables>
+  <Links>
+    <Link table1="PRODUCTOS" table2="TRX_DETALLE" type="Inner" QF="False">
+      <Condition type="FF" expr1="COD_PRODUCTO" expr2="COD_PRODUCTO" op="=" />
+    </Link>
+    <Link table1="TRX_CABECERA" table2="TRX_DETALLE" type="Inner" QF="False">
+      <Condition type="FF" expr1="COMERCIO" expr2="COMERCIO" op="=" />
+    </Link>
+    <Link table1="TRX_CABECERA" table2="TRX_MEDIO_PAGO" type="Inner" QF="False">
+      <Condition type="FF" expr1="COMERCIO" expr2="COMERCIO" op="=" />
+    </Link>
+    <Link table1="TRX_CABECERA" table2="TRX_PERFIL_DESCTO_BDT" type="Inner" QF="False">
+      <Condition type="FF" expr1="COMERCIO" expr2="COMERCIO" op="=" />
+    </Link>
+    <Link table1="TRX_CABECERA" table2="TRX_PROMOCIONES" type="Inner" QF="False">
+      <Condition type="FF" expr1="NRO_CAJA" expr2="NRO_CAJA" op="=" />
+    </Link>
+    <Link table1="TRX_DETALLE" table2="TRX_MEDIO_PAGO" type="Inner" QF="False">
+      <Condition type="FF" expr1="COMERCIO" expr2="COMERCIO" op="=" />
+    </Link>
+    <Link table1="TRX_DETALLE" table2="TRX_PERFIL_DESCTO_BDT" type="Inner" QF="False">
+      <Condition type="FF" expr1="COMERCIO" expr2="COMERCIO" op="=" />
+    </Link>
+    <Link table1="TRX_DETALLE" table2="TRX_PROMOCIONES" type="Inner" QF="False">
+      <Condition type="FF" expr1="NRO_CAJA" expr2="NRO_CAJA" op="=" />
+    </Link>
+    <Link table1="TRX_MEDIO_PAGO" table2="TRX_PERFIL_DESCTO_BDT" type="Inner" QF="False">
+      <Condition type="FF" expr1="COMERCIO" expr2="COMERCIO" op="=" />
+    </Link>
+    <Link table1="TRX_MEDIO_PAGO" table2="TRX_PROMOCIONES" type="Inner" QF="False">
+      <Condition type="FF" expr1="NRO_CAJA" expr2="NRO_CAJA" op="=" />
+    </Link>
+    <Link table1="TRX_PERFIL_DESCTO_BDT" table2="TRX_PROMOCIONES" type="Inner" QF="False">
+      <Condition type="FF" expr1="NRO_CAJA" expr2="NRO_CAJA" op="=" />
+    </Link>
+  </Links>
+  <Editors>
+    <Editor id="_DTE" type="EDIT" resType="String" defValue="" />
+    <Editor id="_DPDE" type="DATETIME" resType="Unknown" subType="Date" />
+    <Editor id="_DPTE" type="DATETIME" resType="Unknown" subType="Time" />
+  </Editors>
+  <Operators>
+    <Operator id="Equal" caption="is equal to" expr="{expr1} = {expr2}" format="{expr1} [[is equal to]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="NotEqual" caption="is not equal to" expr="{expr1} &lt;&gt; {expr2}" format="{expr1} [[is not equal to]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="LessThan" caption="is less than" expr="{expr1} &lt; {expr2}" format="{expr1} [[is less than]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="LessOrEqual" caption="is less than or equal to" expr="{expr1} &lt;= {expr2}" format="{expr1} [[is less than or equal to]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="GreaterThan" caption="is greater than" expr="{expr1} &gt; {expr2}" format="{expr1} [[is greater than]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="GreaterOrEqual" caption="is greater than or equal to" expr="{expr1} &gt;= {expr2}" format="{expr1} [[is greater than or equal to]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="IsNull" caption="is null" expr="{expr1} IS NULL" format="{expr1} [[is null]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="IsNotNull" caption="is not null" expr="{expr1} IS NOT NULL" format="{expr1} [[is not null]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="IsTrue" caption="is true" expr="{expr1} = ${true}" format="{expr1} [[is true]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Boolean operators" cond="False">
+      <Types>Bool</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="NotTrue" caption="is not true" expr="(({expr1} &lt;&gt; ${true}) OR ({expr1} IS NULL))" format="{expr1} [[is not true]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Boolean operators" cond="False">
+      <Types>Bool</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="InList" caption="is in list" expr="{expr1} in ({expr2})" format="{expr1} [[is in list]] {expr2}" constFmt="{const}" kind="List" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="NotInList" caption="is not in list" expr="NOT ({expr1} in ({expr2}))" format="{expr1} [[is not in list]] {expr2}" constFmt="{const}" kind="List" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="Between" caption="is between" expr="{expr1} BETWEEN {expr2} AND {expr3}" format="{expr1} [[is between]] {expr2} and {expr3}" constFmt="{const}" kind="Scalar" isRange="True" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="NotBetween" caption="is not between" expr="NOT ({expr1} BETWEEN {expr2} AND {expr3})" format="{expr1} [[is not between]] {expr2} and {expr3}" constFmt="{const}" kind="Scalar" isRange="True" caseIns="False" group="Common operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="StartsWith" caption="starts with" expr="{expr1} LIKE {expr2}" format="{expr1} [[starts with]] {expr2}" constFmt="{const}{ws}" kind="Scalar" caseIns="False" editor="_DTE" group="String operators" cond="False">
+      <Types>String,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="NotStartsWith" caption="does not start with" expr="NOT ({expr1} LIKE {expr2})" format="{expr1} [[does not start with]] {expr2}" constFmt="{const}{ws}" kind="Scalar" caseIns="False" editor="_DTE" group="String operators" cond="False">
+      <Types>String,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="Contains" caption="contains" expr="{expr1} LIKE {expr2}" format="{expr1} [[contains]] {expr2}" constFmt="{ws}{const}{ws}" kind="Scalar" caseIns="False" editor="_DTE" group="String operators" cond="False">
+      <Types>String,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="NotContains" caption="does not contain" expr="NOT ({expr1} LIKE {expr2})" format="{expr1} [[does not contain]] {expr2}" constFmt="{ws}{const}{ws}" kind="Scalar" caseIns="False" editor="_DTE" group="String operators" cond="False">
+      <Types>String,Memo,FixedChar</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="DateWithinToday" caption="today" expr="${{Today}} &lt;= {expr1} AND {expr1} &lt; ${{Tomorrow}}" format="{expr1} [[within today]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Date/time operators" cond="False">
+      <Types>Date,DateTime</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="DateWithinThisWeek" caption="this week" expr="${{FirstDayOfWeek}} &lt;= {expr1} AND {expr1} &lt; ${{FirstDayOfNextWeek}}" format="{expr1} [[within this week]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Date/time operators" cond="False">
+      <Types>Date,DateTime</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="DateWithinPrevWeek" caption="last week" expr="${{FirstDayOfPrevWeek}} &lt;= {expr1} AND {expr1} &lt; ${{FirstDayOfWeek}}" format="{expr1} [[within last week]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Date/time operators" cond="False">
+      <Types>Date,DateTime</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="DateWithinThisMonth" caption="this month" expr="${{FirstDayOfMonth}} &lt;= {expr1} AND {expr1} &lt; ${{FirstDayOfNextMonth}}" format="{expr1} [[within this month]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Date/time operators" cond="False">
+      <Types>Date,DateTime</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="DateWithinPrevMonth" caption="previous month" expr="${{FirstDayOfPrevMonth}} &lt;= {expr1} AND {expr1} &lt; ${{FirstDayOfMonth}}" format="{expr1} [[within previous month]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Date/time operators" cond="False">
+      <Types>Date,DateTime</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="DateWithinThisYear" caption="this year" expr="${{FirstDayOfYear}} &lt;= {expr1} AND {expr1} &lt; ${{FirstDayOfNextYear}}" format="{expr1} [[within this year]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Date/time operators" cond="False">
+      <Types>Date,DateTime</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="DateWithinPrevYear" caption="last year" expr="${{FirstDayOfPrevYear}} &lt;= {expr1} AND {expr1} &lt; ${{FirstDayOfYear}}" format="{expr1} [[within last year]]" constFmt="{const}" kind="Scalar" caseIns="False" group="Date/time operators" cond="False">
+      <Types>Date,DateTime</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+    <Operator id="DateBeforePrecise" caption="before" expr="{expr1} &lt; {expr2}" format="{expr1} [[before]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" editor="_DPDE" group="Date/time operators" cond="False">
+      <Types>Date,DateTime</Types>
+      <Operands defType="Unknown" defDefValue="${Today}" />
+    </Operator>
+    <Operator id="DateAfterPrecise" caption="after" expr="{expr1} &gt;= {expr2}" format="{expr1} [[after]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" editor="_DPDE" group="Date/time operators" cond="False">
+      <Types>Date,DateTime</Types>
+      <Operands defType="Unknown" defDefValue="${FirstDayOfMonth}" />
+    </Operator>
+    <Operator id="DatePeriodPrecise" caption="custom period" expr="{expr1} BETWEEN {expr2} AND {expr3}" format="{expr1} [[within]] {expr2} and {expr3}" constFmt="{const}" kind="Scalar" isRange="True" caseIns="False" editor="_DPDE" group="Date/time operators" cond="False">
+      <Types>Date,DateTime</Types>
+      <Operands defType="Unknown" defDefValue="${Today}">
+        <Operand type="Unknown" kind="Scalar" defVal="${FirstDayOfMonth}" />
+        <Operand type="Unknown" kind="Scalar" defVal="${Today}" />
+      </Operands>
+    </Operator>
+    <Operator id="TimeBeforePrecise" caption="before" expr="{expr1} &lt; {expr2}" format="{expr1} [[before]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" editor="_DPTE" group="Date/time operators" cond="False">
+      <Types>Time</Types>
+      <Operands defType="Unknown" defDefValue="${Now}" />
+    </Operator>
+    <Operator id="TimeAfterPrecise" caption="after" expr="{expr1} &gt;= {expr2}" format="{expr1} [[after]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" editor="_DPTE" group="Date/time operators" cond="False">
+      <Types>Time</Types>
+      <Operands defType="Unknown" defDefValue="${HourStart}" />
+    </Operator>
+    <Operator id="TimePeriodPrecise" caption="between" expr="{expr1} BETWEEN {expr2} AND {expr3}" format="{expr1} [[between]] {expr2} and {expr3}" constFmt="{const}" kind="Scalar" isRange="True" caseIns="False" editor="_DPTE" group="Date/time operators" cond="False">
+      <Types>Time</Types>
+      <Operands defType="Unknown" defDefValue="${Today}">
+        <Operand type="Unknown" kind="Scalar" defVal="${HourStart}" />
+        <Operand type="Unknown" kind="Scalar" defVal="${Now}" />
+      </Operands>
+    </Operator>
+    <Operator id="MaximumOfAttr" caption="is maximum of" expr="{expr1} = (SELECT MAX({expr2.field}) FROM {expr2.table})" format="{expr1} [[is equal to maximum of]] {expr2}" constFmt="{const}" kind="Attribute" caseIns="False" group="Other operators" cond="False">
+      <Types>String,Byte,Word,Int,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar,Date,DateTime,Time</Types>
+      <Operands defType="Unknown" />
+    </Operator>
+  </Operators>
+  <Entities maxId="0">
+    <Entity id="" name="DOTACION" UIC="True" UIR="True" UIS="True">
+      <Attr id="DOTACION.RUT" kind="Data" expr="RUT" caption="RUT" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="DOTACION">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="DOTACION.NOMBRE" kind="Data" expr="NOMBRE" caption="NOMBRE" type="String" size="60" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="DOTACION">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="DOTACION.AREA" kind="Data" expr="AREA" caption="AREA" type="String" size="40" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="DOTACION">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="DOTACION.OFICINA" kind="Data" expr="OFICINA" caption="OFICINA" type="String" size="40" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="DOTACION">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="DOTACION.CARGO" kind="Data" expr="CARGO" caption="CARGO" type="String" size="80" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="DOTACION">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="DOTACION.RUT2" kind="Data" expr="RUT" caption="RUT" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="DOTACION">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="DOTACION.NOMBRE2" kind="Data" expr="NOMBRE" caption="NOMBRE" type="String" size="120" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="DOTACION">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+    </Entity>
+    <Entity id="" name="PRODUCTOS" UIC="True" UIR="True" UIS="True">
+      <Attr id="PRODUCTOS.COD_PRODUCTO" kind="Data" expr="COD_PRODUCTO" caption="COD_PRODUCTO" type="String" size="8" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.PRODUCTO" kind="Data" expr="PRODUCTO" caption="PRODUCTO" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_MARCA" kind="Data" expr="COD_MARCA" caption="COD_MARCA" type="String" size="6" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.MARCA" kind="Data" expr="MARCA" caption="MARCA" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_MODELO" kind="Data" expr="COD_MODELO" caption="COD_MODELO" type="String" size="8" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.MODELO" kind="Data" expr="MODELO" caption="MODELO" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_SUB_LINEA" kind="Data" expr="COD_SUB_LINEA" caption="COD_SUB_LINEA" type="String" size="8" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.SUB_LINEA" kind="Data" expr="SUB_LINEA" caption="SUB_LINEA" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_LINEA" kind="Data" expr="COD_LINEA" caption="COD_LINEA" type="String" size="6" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.LINEA" kind="Data" expr="LINEA" caption="LINEA" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_DEPTO" kind="Data" expr="COD_DEPTO" caption="COD_DEPTO" type="String" size="5" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.DEPTO" kind="Data" expr="DEPTO" caption="DEPTO" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_AREA" kind="Data" expr="COD_AREA" caption="COD_AREA" type="String" size="3" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.AREA" kind="Data" expr="AREA" caption="AREA" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_DIVISION" kind="Data" expr="COD_DIVISION" caption="COD_DIVISION" type="String" size="3" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.DIVISION" kind="Data" expr="DIVISION" caption="DIVISION" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_ARTICULO" kind="Data" expr="COD_ARTICULO" caption="COD_ARTICULO" type="String" size="15" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_PROVEEDOR" kind="Data" expr="COD_PROVEEDOR" caption="COD_PROVEEDOR" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.RUT_PROVEEDOR" kind="Data" expr="RUT_PROVEEDOR" caption="RUT_PROVEEDOR" type="String" size="10" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.PROVEEDOR" kind="Data" expr="PROVEEDOR" caption="PROVEEDOR" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_TEMPORADA" kind="Data" expr="COD_TEMPORADA" caption="COD_TEMPORADA" type="String" size="5" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.TEMPORADA" kind="Data" expr="TEMPORADA" caption="TEMPORADA" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_TIPO_NEGOCIACION" kind="Data" expr="COD_TIPO_NEGOCIACION" caption="COD_TIPO_NEGOCIACION" type="String" size="10" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.TIPO_NEGOCIACION" kind="Data" expr="TIPO_NEGOCIACION" caption="TIPO_NEGOCIACION" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.COD_ESTADO" kind="Data" expr="COD_ESTADO" caption="COD_ESTADO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.ESTADO" kind="Data" expr="ESTADO" caption="ESTADO" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="PRODUCTOS.ACTUALIZACION" kind="Data" expr="ACTUALIZACION" caption="ACTUALIZACION" type="DateTime" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="PRODUCTOS">
+        <Operators>DateWithinToday,DateWithinThisWeek,DateWithinPrevWeek,DateWithinThisMonth,DateWithinPrevMonth,DateWithinThisYear,DateWithinPrevYear,DateBeforePrecise,DateAfterPrecise,DatePeriodPrecise,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+    </Entity>
+    <Entity id="" name="SUCURSALES" UIC="True" UIR="True" UIS="True">
+      <Attr id="SUCURSALES.COD_SUCURSAL" kind="Data" expr="COD_SUCURSAL" caption="COD_SUCURSAL" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="SUCURSALES">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="SUCURSALES.SUCURSAL" kind="Data" expr="SUCURSAL" caption="SUCURSAL" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="SUCURSALES">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="SUCURSALES.ZONA" kind="Data" expr="ZONA" caption="ZONA" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="SUCURSALES">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="SUCURSALES.PAIS" kind="Data" expr="PAIS" caption="PAIS" type="String" size="5" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="SUCURSALES">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="SUCURSALES.SUCURSAL_ALT" kind="Data" expr="SUCURSAL_ALT" caption="SUCURSAL_ALT" type="String" size="50" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="SUCURSALES">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+    </Entity>
+    <Entity id="" name="TRX_CABECERA" UIC="True" UIR="True" UIS="True">
+      <Attr id="TRX_CABECERA.COMERCIO" kind="Data" expr="COMERCIO" caption="COMERCIO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.COD_SUCURSAL" kind="Data" expr="COD_SUCURSAL" caption="COD_SUCURSAL" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.FECHA_TRX" kind="Data" expr="FECHA_TRX" caption="FECHA_TRX" type="DateTime" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>DateWithinToday,DateWithinThisWeek,DateWithinPrevWeek,DateWithinThisMonth,DateWithinPrevMonth,DateWithinThisYear,DateWithinPrevYear,DateBeforePrecise,DateAfterPrecise,DatePeriodPrecise,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.NRO_CAJA" kind="Data" expr="NRO_CAJA" caption="NRO_CAJA" type="String" size="6" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.NRO_DOCTO" kind="Data" expr="NRO_DOCTO" caption="NRO_DOCTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.FECHA" kind="Data" expr="FECHA" caption="FECHA" type="DateTime" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>DateWithinToday,DateWithinThisWeek,DateWithinPrevWeek,DateWithinThisMonth,DateWithinPrevMonth,DateWithinThisYear,DateWithinPrevYear,DateBeforePrecise,DateAfterPrecise,DatePeriodPrecise,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.COD_TRX" kind="Data" expr="COD_TRX" caption="COD_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.TIPO_TRX" kind="Data" expr="TIPO_TRX" caption="TIPO_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.COMPRADOR" kind="Data" expr="COMPRADOR" caption="COMPRADOR" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.VENDEDOR" kind="Data" expr="VENDEDOR" caption="VENDEDOR" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.MONTO" kind="Data" expr="MONTO" caption="MONTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.MONTO_TRX" kind="Data" expr="MONTO_TRX" caption="MONTO_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.NRO_TRX" kind="Data" expr="NRO_TRX" caption="NRO_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.ORIGEN_TRX" kind="Data" expr="ORIGEN_TRX" caption="ORIGEN_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.COMERCIO_ASOC" kind="Data" expr="COMERCIO_ASOC" caption="COMERCIO_ASOC" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.COD_SUCURSAL_ASOC" kind="Data" expr="COD_SUCURSAL_ASOC" caption="COD_SUCURSAL_ASOC" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.FECHA_ASOC" kind="Data" expr="FECHA_ASOC" caption="FECHA_ASOC" type="String" size="8" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.NRO_CAJA_ASOC" kind="Data" expr="NRO_CAJA_ASOC" caption="NRO_CAJA_ASOC" type="String" size="6" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.NRO_DOCTO_ASOC" kind="Data" expr="NRO_DOCTO_ASOC" caption="NRO_DOCTO_ASOC" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.SUPERVISOR" kind="Data" expr="SUPERVISOR" caption="SUPERVISOR" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.SERVICIO" kind="Data" expr="SERVICIO" caption="SERVICIO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.EMPRESA_ASOC" kind="Data" expr="EMPRESA_ASOC" caption="EMPRESA_ASOC" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.TXHEA_RUN_CAJ_CRO" kind="Data" expr="TXHEA_RUN_CAJ_CRO" caption="TXHEA_RUN_CAJ_CRO" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.TXHEA_RUN_CAJ_CRO_ORI" kind="Data" expr="TXHEA_RUN_CAJ_CRO_ORI" caption="TXHEA_RUN_CAJ_CRO_ORI" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_CABECERA.TXHEA_MNT_DNN" kind="Data" expr="TXHEA_MNT_DNN" caption="TXHEA_MNT_DNN" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_CABECERA">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+    </Entity>
+    <Entity id="" name="TRX_DETALLE" UIC="True" UIR="True" UIS="True">
+      <Attr id="TRX_DETALLE.COMERCIO" kind="Data" expr="COMERCIO" caption="COMERCIO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_SUCURSAL" kind="Data" expr="COD_SUCURSAL" caption="COD_SUCURSAL" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.FECHA_TRX" kind="Data" expr="FECHA_TRX" caption="FECHA_TRX" type="DateTime" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>DateWithinToday,DateWithinThisWeek,DateWithinPrevWeek,DateWithinThisMonth,DateWithinPrevMonth,DateWithinThisYear,DateWithinPrevYear,DateBeforePrecise,DateAfterPrecise,DatePeriodPrecise,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.NRO_CAJA" kind="Data" expr="NRO_CAJA" caption="NRO_CAJA" type="String" size="6" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.NRO_DOCTO" kind="Data" expr="NRO_DOCTO" caption="NRO_DOCTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.NRO_ITEM" kind="Data" expr="NRO_ITEM" caption="NRO_ITEM" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.FECHA" kind="Data" expr="FECHA" caption="FECHA" type="DateTime" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>DateWithinToday,DateWithinThisWeek,DateWithinPrevWeek,DateWithinThisMonth,DateWithinPrevMonth,DateWithinThisYear,DateWithinPrevYear,DateBeforePrecise,DateAfterPrecise,DatePeriodPrecise,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_TRX" kind="Data" expr="COD_TRX" caption="COD_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.TIPO_TRX" kind="Data" expr="TIPO_TRX" caption="TIPO_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COMPRADOR" kind="Data" expr="COMPRADOR" caption="COMPRADOR" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.VENDEDOR" kind="Data" expr="VENDEDOR" caption="VENDEDOR" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.MONTO" kind="Data" expr="MONTO" caption="MONTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.MONTO_TRX" kind="Data" expr="MONTO_TRX" caption="MONTO_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.NRO_TRX" kind="Data" expr="NRO_TRX" caption="NRO_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.ORIGEN_TRX" kind="Data" expr="ORIGEN_TRX" caption="ORIGEN_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COMERCIO_ASOC" kind="Data" expr="COMERCIO_ASOC" caption="COMERCIO_ASOC" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_SUCURSAL_ASOC" kind="Data" expr="COD_SUCURSAL_ASOC" caption="COD_SUCURSAL_ASOC" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.FECHA_ASOC" kind="Data" expr="FECHA_ASOC" caption="FECHA_ASOC" type="String" size="8" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.NRO_CAJA_ASOC" kind="Data" expr="NRO_CAJA_ASOC" caption="NRO_CAJA_ASOC" type="String" size="6" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.NRO_DOCTO_ASOC" kind="Data" expr="NRO_DOCTO_ASOC" caption="NRO_DOCTO_ASOC" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.SUPERVISOR" kind="Data" expr="SUPERVISOR" caption="SUPERVISOR" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.CAJERO" kind="Data" expr="CAJERO" caption="CAJERO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.SERVICIO" kind="Data" expr="SERVICIO" caption="SERVICIO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.EMPRESA_ASOC" kind="Data" expr="EMPRESA_ASOC" caption="EMPRESA_ASOC" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.TXHEA_RUN_CAJ_CRO" kind="Data" expr="TXHEA_RUN_CAJ_CRO" caption="TXHEA_RUN_CAJ_CRO" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.TXHEA_RUN_CAJ_CRO_ORI" kind="Data" expr="TXHEA_RUN_CAJ_CRO_ORI" caption="TXHEA_RUN_CAJ_CRO_ORI" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.TXHEA_MNT_DNN" kind="Data" expr="TXHEA_MNT_DNN" caption="TXHEA_MNT_DNN" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_ARTICULO" kind="Data" expr="COD_ARTICULO" caption="COD_ARTICULO" type="String" size="13" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_NOVIOS" kind="Data" expr="COD_NOVIOS" caption="COD_NOVIOS" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.PRECIO_ARTICULO" kind="Data" expr="PRECIO_ARTICULO" caption="PRECIO_ARTICULO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.UNIDADES" kind="Data" expr="UNIDADES" caption="UNIDADES" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.DESCUENTO_ARTICULO" kind="Data" expr="DESCUENTO_ARTICULO" caption="DESCUENTO_ARTICULO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.TIPO_DESCUENTO" kind="Data" expr="TIPO_DESCUENTO" caption="TIPO_DESCUENTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.CUD" kind="Data" expr="CUD" caption="CUD" type="String" size="22" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.DIRECCION_E_S" kind="Data" expr="DIRECCION_E_S" caption="DIRECCION_E_S" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.MONTO_CAPITAL" kind="Data" expr="MONTO_CAPITAL" caption="MONTO_CAPITAL" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.MONTO_INTERESES" kind="Data" expr="MONTO_INTERESES" caption="MONTO_INTERESES" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.MONTO_GASTOS" kind="Data" expr="MONTO_GASTOS" caption="MONTO_GASTOS" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.MONTO_COMISION" kind="Data" expr="MONTO_COMISION" caption="MONTO_COMISION" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.DESPACHO_DOMICILIO" kind="Data" expr="DESPACHO_DOMICILIO" caption="DESPACHO_DOMICILIO" type="String" size="1" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.DESCUENTO_BOLETA" kind="Data" expr="DESCUENTO_BOLETA" caption="DESCUENTO_BOLETA" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_DIVISION" kind="Data" expr="COD_DIVISION" caption="COD_DIVISION" type="String" size="3" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_AREA" kind="Data" expr="COD_AREA" caption="COD_AREA" type="String" size="3" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_DEPTO" kind="Data" expr="COD_DEPTO" caption="COD_DEPTO" type="String" size="5" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_LINEA" kind="Data" expr="COD_LINEA" caption="COD_LINEA" type="String" size="6" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_SUB_LINEA" kind="Data" expr="COD_SUB_LINEA" caption="COD_SUB_LINEA" type="String" size="7" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.USA_DCTO" kind="Data" expr="USA_DCTO" caption="USA_DCTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.USA_CTA_CTE_STOCK" kind="Data" expr="USA_CTA_CTE_STOCK" caption="USA_CTA_CTE_STOCK" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_COMBO" kind="Data" expr="COD_COMBO" caption="COD_COMBO" type="String" size="13" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.NUM_EVENTO" kind="Data" expr="NUM_EVENTO" caption="NUM_EVENTO" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.PRIORIDAD" kind="Data" expr="PRIORIDAD" caption="PRIORIDAD" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.SUB_PRIORIDAD" kind="Data" expr="SUB_PRIORIDAD" caption="SUB_PRIORIDAD" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.VENTA_EMPLEADO" kind="Data" expr="VENTA_EMPLEADO" caption="VENTA_EMPLEADO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_DPT_MPS" kind="Data" expr="COD_DPT_MPS" caption="COD_DPT_MPS" type="String" size="5" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_LIN_MPS" kind="Data" expr="COD_LIN_MPS" caption="COD_LIN_MPS" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.TASA_CAR" kind="Data" expr="TASA_CAR" caption="TASA_CAR" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.TASA_FINAL" kind="Data" expr="TASA_FINAL" caption="TASA_FINAL" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.FACTOR_CAR" kind="Data" expr="FACTOR_CAR" caption="FACTOR_CAR" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.FACTOR_FINAL" kind="Data" expr="FACTOR_FINAL" caption="FACTOR_FINAL" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.NRO_CAJA_NUM" kind="Data" expr="NRO_CAJA_NUM" caption="NRO_CAJA_NUM" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.CTA_NRO_TRX" kind="Data" expr="CTA_NRO_TRX" caption="CTA_NRO_TRX" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_PRODUCTO" kind="Data" expr="COD_PRODUCTO" caption="COD_PRODUCTO" type="String" size="15" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.DESCUENTO_PUNTOS_RIPLEY" kind="Data" expr="DESCUENTO_PUNTOS_RIPLEY" caption="DESCUENTO_PUNTOS_RIPLEY" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.RUT_ANFITRION" kind="Data" expr="RUT_ANFITRION" caption="RUT_ANFITRION" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.DESCUENTO_TRE" kind="Data" expr="DESCUENTO_TRE" caption="DESCUENTO_TRE" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_DETALLE.COD_DESCUENTO" kind="Data" expr="COD_DESCUENTO" caption="COD_DESCUENTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_DETALLE">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+    </Entity>
+    <Entity id="" name="TRX_MEDIO_PAGO" UIC="True" UIR="True" UIS="True">
+      <Attr id="TRX_MEDIO_PAGO.COMERCIO" kind="Data" expr="COMERCIO" caption="COMERCIO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_MEDIO_PAGO">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_MEDIO_PAGO.COD_SUCURSAL" kind="Data" expr="COD_SUCURSAL" caption="COD_SUCURSAL" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_MEDIO_PAGO">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_MEDIO_PAGO.FECHA_TRX" kind="Data" expr="FECHA_TRX" caption="FECHA_TRX" type="DateTime" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_MEDIO_PAGO">
+        <Operators>DateWithinToday,DateWithinThisWeek,DateWithinPrevWeek,DateWithinThisMonth,DateWithinPrevMonth,DateWithinThisYear,DateWithinPrevYear,DateBeforePrecise,DateAfterPrecise,DatePeriodPrecise,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_MEDIO_PAGO.NRO_CAJA" kind="Data" expr="NRO_CAJA" caption="NRO_CAJA" type="String" size="6" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_MEDIO_PAGO">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_MEDIO_PAGO.NRO_DOCTO" kind="Data" expr="NRO_DOCTO" caption="NRO_DOCTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_MEDIO_PAGO">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_MEDIO_PAGO.COD_MEDIO_PAGO" kind="Data" expr="COD_MEDIO_PAGO" caption="COD_MEDIO_PAGO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_MEDIO_PAGO">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_MEDIO_PAGO.FECHA" kind="Data" expr="FECHA" caption="FECHA" type="DateTime" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_MEDIO_PAGO">
+        <Operators>DateWithinToday,DateWithinThisWeek,DateWithinPrevWeek,DateWithinThisMonth,DateWithinPrevMonth,DateWithinThisYear,DateWithinPrevYear,DateBeforePrecise,DateAfterPrecise,DatePeriodPrecise,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_MEDIO_PAGO.MONTO" kind="Data" expr="MONTO" caption="MONTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_MEDIO_PAGO">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_MEDIO_PAGO.TXDFO_MNT_DNN" kind="Data" expr="TXDFO_MNT_DNN" caption="TXDFO_MNT_DNN" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_MEDIO_PAGO">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+    </Entity>
+    <Entity id="" name="TRX_PERFIL_DESCTO_BDT" UIC="True" UIR="True" UIS="True">
+      <Attr id="TRX_PERFIL_DESCTO_BDT.COMERCIO" kind="Data" expr="COMERCIO" caption="COMERCIO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PERFIL_DESCTO_BDT">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PERFIL_DESCTO_BDT.COD_SUCURSAL" kind="Data" expr="COD_SUCURSAL" caption="COD_SUCURSAL" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PERFIL_DESCTO_BDT">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PERFIL_DESCTO_BDT.FECHA" kind="Data" expr="FECHA" caption="FECHA" type="DateTime" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PERFIL_DESCTO_BDT">
+        <Operators>DateWithinToday,DateWithinThisWeek,DateWithinPrevWeek,DateWithinThisMonth,DateWithinPrevMonth,DateWithinThisYear,DateWithinPrevYear,DateBeforePrecise,DateAfterPrecise,DatePeriodPrecise,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PERFIL_DESCTO_BDT.NRO_CAJA" kind="Data" expr="NRO_CAJA" caption="NRO_CAJA" type="String" size="6" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PERFIL_DESCTO_BDT">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PERFIL_DESCTO_BDT.NRO_DOCTO" kind="Data" expr="NRO_DOCTO" caption="NRO_DOCTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PERFIL_DESCTO_BDT">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PERFIL_DESCTO_BDT.RUT_CONTROL_DSCTO" kind="Data" expr="RUT_CONTROL_DSCTO" caption="RUT_CONTROL_DSCTO" type="String" size="12" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PERFIL_DESCTO_BDT">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PERFIL_DESCTO_BDT.FECHA_TRUNC" kind="Data" expr="FECHA_TRUNC" caption="FECHA_TRUNC" type="DateTime" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PERFIL_DESCTO_BDT">
+        <Operators>DateWithinToday,DateWithinThisWeek,DateWithinPrevWeek,DateWithinThisMonth,DateWithinPrevMonth,DateWithinThisYear,DateWithinPrevYear,DateBeforePrecise,DateAfterPrecise,DatePeriodPrecise,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PERFIL_DESCTO_BDT.GLOSA" kind="Data" expr="GLOSA" caption="GLOSA" type="String" size="100" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PERFIL_DESCTO_BDT">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+    </Entity>
+    <Entity id="" name="TRX_PROMOCIONES" UIC="True" UIR="True" UIS="True">
+      <Attr id="TRX_PROMOCIONES.FECHA_TRX" kind="Data" expr="FECHA_TRX" caption="FECHA_TRX" type="DateTime" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>DateWithinToday,DateWithinThisWeek,DateWithinPrevWeek,DateWithinThisMonth,DateWithinPrevMonth,DateWithinThisYear,DateWithinPrevYear,DateBeforePrecise,DateAfterPrecise,DatePeriodPrecise,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.SUCURSAL" kind="Data" expr="SUCURSAL" caption="SUCURSAL" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.NRO_CAJA" kind="Data" expr="NRO_CAJA" caption="NRO_CAJA" type="String" size="6" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.NRO_TRANSACCION" kind="Data" expr="NRO_TRANSACCION" caption="NRO_TRANSACCION" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.NRO_ITEM" kind="Data" expr="NRO_ITEM" caption="NRO_ITEM" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.TIPO_PROMOCION" kind="Data" expr="TIPO_PROMOCION" caption="TIPO_PROMOCION" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.COD_PROMOCION" kind="Data" expr="COD_PROMOCION" caption="COD_PROMOCION" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.COD_CUP" kind="Data" expr="COD_CUP" caption="COD_CUP" type="String" size="60" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.MONTO_DESCUENTO" kind="Data" expr="MONTO_DESCUENTO" caption="MONTO_DESCUENTO" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.MONTO_LAN" kind="Data" expr="MONTO_LAN" caption="MONTO_LAN" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.MONTO_PESOS_SUENOS" kind="Data" expr="MONTO_PESOS_SUENOS" caption="MONTO_PESOS_SUENOS" type="Float" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+      <Attr id="TRX_PROMOCIONES.RUT_DESCUENTO" kind="Data" expr="RUT_DESCUENTO" caption="RUT_DESCUENTO" type="Int64" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="TRX_PROMOCIONES">
+        <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,IsNull,IsNotNull</Operators>
+      </Attr>
+    </Entity>
+  </Entities>
+</DataModel>
