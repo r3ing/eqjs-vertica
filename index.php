@@ -26,6 +26,12 @@
             margin: 0;
             padding: 0;
         }
+
+        /*
+        .eqjs-qp-row-predicate {
+            visibility: hidden;
+        }
+        */
     </style>
 
     <script type="text/javascript">
@@ -63,7 +69,7 @@
 			loadModelUrl: "QueryBuilder.php?action=getModel",
 			syncQueryUrl: "QueryBuilder.php?action=syncQuery",
 			executeQueryUrl: "QueryBuilder.php?action=executeQuery",
-			listRequestUrl: "QueryBuilder.php?action=listRequest",
+			listRequestUrl: "QueryBuilder.php?action=listRequestlistRequest",
             modelId: "ModelID",
             listRequestHandler: myListRequestHandler,
             entitiesPanel: { showCheckboxes: true },
@@ -180,6 +186,6 @@
     <script src="libs/eqjs/js/eq.all.min.js" type="text/javascript"></script>
     <script src="libs/eqjs/js/eq.view.basic.js" type="text/javascript"></script>
     <script src="libs/eqjs/js/easychart.js" type="text/javascript"></script>
-    
+
 </body>
 </html>

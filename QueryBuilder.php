@@ -39,7 +39,8 @@
 
 	function renderDataTable($recordSet) {
 		$ret=array();
-		/*
+
+		/*---- CODIGO ORIGINAL PARA CONEXION MYSQL -------
 		$columns=$recordSet->fetch_fields();
         foreach($columns as $col) {
             $columnDescr=array();
@@ -48,7 +49,7 @@
             $columnDescr['type']=getTypeName($col->type);
             $ret['cols'][]=$columnDescr;
         }
-		
+
         while($array=$recordSet->fetch_array(MYSQLI_ASSOC)) {
 			$values=array_values($array);
 			$rowData=array();
@@ -70,18 +71,31 @@
 			}
 			$ret['rows'][]=$rowData;
 		}
+		---- CODIGO ORIGINAL PARA CONEXION MYSQL -------
 		*/
-		for ($i = 0; $i < $recordSet->columnCount(); $i++) {
-			$col = $recordSet->getColumnMeta($i);
-			$columns[] = $col['name'];
+
+		/*
+		$columns=$recordSet->fetch(PDO::FETCH_ASSOC);
+		foreach($columns as $col) {
 			$columnDescr=array();
-			$columnDescr['id']= $col['name'];
-			$columnDescr['label']= $col['name'];
-			$columnDescr['type']=$col['pdo_type'];
+			$columnDescr['id']=$col->name;
+			$columnDescr['label']=$col->name;
+			$columnDescr['type']=getTypeName($col->type);
 			$ret['cols'][]=$columnDescr;
 		}
+		*/
+		if($recordSet->rowCount() != 0){
+			$columns=array_keys($recordSet->fetch(PDO::FETCH_ASSOC));
+			foreach($columns as $col) {
+				$columnDescr=array();
+				$columnDescr['id']=$col;
+				$columnDescr['label']=$col;
+				$columnDescr['type']='string';
+				$ret['cols'][]=$columnDescr;
+			}
+		}
 
-		while($array=$recordSet->fetchAll(PDO::FETCH_NUM)) {
+		while($array=$recordSet->fetch(PDO::FETCH_ASSOC)) {
 			$values=array_values($array);
 			$rowData=array();
 			$rowData['c']=array();
@@ -118,16 +132,11 @@
 	}
 	
 	function executeSql($sql) {
-		/*
-		$mysqli=new mysqli(config::$DB_HOST,config::$DB_USER,config::$DB_PASSWD,config::$DB_NAME,config::$DB_PORT);
-		if ($mysqli->connect_error) {
-			return null;
-		}
-		return $mysqli->query($sql);
-		*/
 		try{
-			$conect_vertica = new PDO('odbc:Driver={Vertica};Database=;Servername=', '','');
-			$conect_vertica->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+			$conect_vertica  = new PDO('odbc:Driver={Vertica};Database=;Servername=', '','');
+			$conect_vertica->setAttribute(PDO::ATTR_EMULATE_PREPARES, true); 
+			$conect_vertica->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			// $conect_vertica->setFetchMode(PDO::ATTR_ERRMODE, PDO::FETCH_ASSOC);
 			$result = $conect_vertica->prepare($sql);
 			$result->execute();
 			return $result;

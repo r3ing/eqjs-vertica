@@ -35,8 +35,20 @@ function getDataJson($json){
                                 $values = sizeof($v);
                                 foreach ($v as $k => $v) {
                                     foreach ($v as $k => $v) {
+                                        /*
                                         if ($k == 'id')
                                             $condition->col = $v;
+                                        */
+                                        if ($k == 'id'){
+                                            if(empty($condition->col))
+                                                $condition->col = $v;
+                                            else{
+                                                $condition->value = $v;
+                                                $conditions->append($condition);
+                                                $condition = new stdClass();
+                                                break;
+                                            }
+                                        }
 
                                         if ($k == 'dataType') {
                                             if(!empty($condition->type))
@@ -192,7 +204,11 @@ function createQuery($colums, $conditions, $tables){
                         if(!empty($c->value)){
                             if(!empty($where))
                                 $where = $where . ' AND ';
-                            $where = $where . $c->col .' = '. $c->value;
+
+                            if($c->type == 'DateTime')
+                                $where = $where . $c->col ." = '". $c->value . "'";
+                            else
+                                $where = $where . $c->col .' = '. $c->value;
                         }
                         break;
                     case 'NotEqual':
@@ -329,6 +345,11 @@ function createQuery($colums, $conditions, $tables){
                             $where = $where . ' NOT('.$c->col ." LIKE '%%'".')';
                         else
                             $where = $where . ' NOT('.$c->col ." LIKE '%". $c->value ."%'".')';
+                        break;
+                    case 'SubQuery':
+                        if(!empty($where))
+                            $where = $where . ' AND ';
+                        $where = $where . $c->col .' = '. $c->value;
                         break;
                     //falta programar, crear los valores
                     case 'InSubQuery':
