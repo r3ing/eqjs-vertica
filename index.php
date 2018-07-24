@@ -32,6 +32,12 @@
             visibility: hidden;
         }
         */
+        .eqjs-qp-condition-button-addPredicate{
+            visibility: hidden;
+        }
+        .eqjs-qp-condition-button-addCondition{
+            visibility: hidden;
+        }
     </style>
 
     <script type="text/javascript">

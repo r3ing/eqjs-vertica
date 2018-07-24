@@ -84,18 +84,20 @@
 			$ret['cols'][]=$columnDescr;
 		}
 		*/
-		if($recordSet->rowCount() != 0){
-			$columns=array_keys($recordSet->fetch(PDO::FETCH_ASSOC));
-			foreach($columns as $col) {
-				$columnDescr=array();
-				$columnDescr['id']=$col;
-				$columnDescr['label']=$col;
-				$columnDescr['type']='string';
-				$ret['cols'][]=$columnDescr;
-			}
-		}
 
 		while($array=$recordSet->fetch(PDO::FETCH_ASSOC)) {
+
+			if(empty($columns)) {
+				$columns = array_keys($array);
+				foreach ($columns as $col) {
+					$columnDescr = array();
+					$columnDescr['id'] = $col;
+					$columnDescr['label'] = $col;
+					$columnDescr['type'] = 'string';
+					$ret['cols'][] = $columnDescr;
+				}
+			}
+
 			$values=array_values($array);
 			$rowData=array();
 			$rowData['c']=array();
