@@ -449,6 +449,8 @@ function createQuery($colums, $conditions, $tables){
 
     if(sizeof($colums) > 1 && $isGroupBy)
         $groupBy = ' GROUP BY '.$groupBy;
+    else
+        $groupBy = '';
 
     if(!empty($where))
         $where = ' WHERE '.$where;
