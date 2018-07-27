@@ -134,13 +134,11 @@ function getDataJson($json){
 
 function createQuery($colums, $conditions, $tables){
 
-    $query     = '';
-    $select    = '';
-    $orderBy   = '';
-    $groupBy   = '';
-    $from      = '';
-    $where     = '';
-    $isGroupBy = false;
+    $query    = '';
+    $select   = '';
+    $orderBy  = '';
+    $from     = '';
+    $where    = '';
 
     foreach ($tables as $t){
         if(!empty($from))
@@ -154,14 +152,9 @@ function createQuery($colums, $conditions, $tables){
             if(!empty($select))
                 $select = $select . ', ';
             $select = $select . $c->col;
-
-            if(!empty($groupBy))
-                $groupBy = $groupBy . ', ';
-            $groupBy = $groupBy . $c->col;
         }
 
         if($c->func != ''){
-            $isGroupBy = true;
             switch ($c->func){
                 case 'SUM':
                     if(!empty($select))
@@ -447,13 +440,10 @@ function createQuery($colums, $conditions, $tables){
     if(!empty($orderBy))
        $orderBy = ' ORDER BY '.$orderBy;
 
-    if(sizeof($colums) > 1 && $isGroupBy)
-        $groupBy = ' GROUP BY '.$groupBy;
-
     if(!empty($where))
         $where = ' WHERE '.$where;
 
-    $query = 'SELECT '. $select .' FROM '. $from . $where . $groupBy .$orderBy;  //' WHERE '. $where .' '. $orderBy;
+    $query = 'SELECT '. $select .' FROM '. $from . $where . $orderBy;  //' WHERE '. $where .' '. $orderBy;
 
     return $query;
 }
