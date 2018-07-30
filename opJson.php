@@ -153,11 +153,17 @@ function createQuery($colums, $conditions, $tables){
         if($c->func == ''){
             if(!empty($select))
                 $select = $select . ', ';
-            $select = $select . $c->col;
+            //$select = $select . $c->col;
+            if($c->title == '')
+                $select = $select . $c->col;
+            else $select = $select . $c->col .' AS '. str_replace(' ','_',trim($c->title));
 
             if(!empty($groupBy))
                 $groupBy = $groupBy . ', ';
-            $groupBy = $groupBy . $c->col;
+            //$groupBy = $groupBy . $c->col;
+            if($c->title == '')
+                $groupBy = $groupBy . $c->col;
+            else $groupBy = $groupBy . trim($c->title);
         }
 
         if($c->func != ''){
@@ -167,31 +173,43 @@ function createQuery($colums, $conditions, $tables){
                     if(!empty($select))
                         $select = $select . ', ';
                     $select = $select . $c->func .'('.$c->col.')';
+                    if($c->title != '')
+                        $select = $select .' AS '. str_replace(' ','_',trim($c->title));
                     break;
                 case 'COUNT':
                     if(!empty($select))
                         $select = $select . ', ';
                     $select = $select . $c->func .'('.$c->col.')';
+                    if($c->title != '')
+                        $select = $select .' AS '. str_replace(' ','_',trim($c->title));
                     break;
                 case 'CNTDST':
                     if(!empty($select))
                         $select = $select . ', ';
                     $select = $select .'COUNT(DISTINCT '. $c->col .')';
+                    if($c->title != '')
+                        $select = $select .' AS '. str_replace(' ','_',trim($c->title));
                     break;
                 case 'AVG':
                     if(!empty($select))
                         $select = $select . ', ';
                     $select = $select . $c->func .'('.$c->col.')';
+                    if($c->title != '')
+                        $select = $select .' AS '. str_replace(' ','_',trim($c->title));
                     break;
                 case 'MIN':
                     if(!empty($select))
                         $select = $select . ', ';
                     $select = $select . $c->func .'('.$c->col.')';
+                    if($c->title != '')
+                        $select = $select .' AS '. str_replace(' ','_',trim($c->title));
                     break;
                 case 'MAX':
                     if(!empty($select))
                         $select = $select . ', ';
                     $select = $select . $c->func .'('.$c->col.')';
+                    if($c->title != '')
+                        $select = $select .' AS '. str_replace(' ','_',trim($c->title));
                     break;
             }
         }
