@@ -1,13 +1,4 @@
-﻿<?php
-	include('../../MASTER/include/verifyAPP.php');
-
-	$ID_US	= $vari[0];
-
-	$name_application 	= $_GET['name_application'];
-	$tipo 				= $_GET['tipo'];
-	$descripcion        = $_GET['descripcion'];
-?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -92,6 +83,8 @@
 			loadModelUrl: "QueryBuilder.php?action=getModel",
 			syncQueryUrl: "QueryBuilder.php?action=syncQuery",
 			executeQueryUrl: "QueryBuilder.php?action=executeQuery",
+            loadQueryUrl: "QueryBuilder.php?action=loadQuery",
+            saveQueryUrl: "QueryBuilder.php?action=saveQuery",
 			listRequestUrl: "QueryBuilder.php?action=listRequestlistRequest",
             modelId: "ModelID",
             listRequestHandler: myListRequestHandler,
@@ -176,9 +169,13 @@
                 <hr class="menu-hr hr" />
                 <div class="menu-title">Menú</div>
                 <div class="menu-content">
-                    <div id="ClearQueryButton" class="eqv-button clear-button">Limpiar Query</div>
-                    <div id="ExecuteQueryButton" class="eqv-button execute-button">Ejecutar</div>
+                    <div id="ClearQueryButton" class="eqv-button clear-button">Clear query</div>
+                    <div id="LoadQueryButton" class="eqv-button load-query-button">Load query</div>
+                    <div id="SaveQueryButton" class="eqv-button save-query-button">Save query</div>
+                    <div id="ExecuteQueryButton" class="eqv-button execute-button">Execute</div>
                 </div>
+
+
             </div>
         </div>
 
@@ -270,7 +267,6 @@
             // Download CSV file
             downloadCSV(csv.join("\n"), filename);
         }
-
 
 
     </script>

@@ -1,0 +1,1 @@
+{"root":{"linkType":"All","enabled":true,"conditions":[]},"columns":[{"caption":"DOTACION NOMBRE","sorting":"None","sortIndex":-1,"expr":{"typeName":"ENTATTR","id":"DOTACION.NOMBRE"},"params":[],"blockId":"ColumnsPanel-col-1"}],"justsorted":[],"id":"LastQuery","modelId":"a72390b5-c5bf-44d5-b36f-8bc9b87b07c6","modelName":"New data model"}

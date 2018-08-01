@@ -40,51 +40,6 @@
 	function renderDataTable($recordSet) {
 		$ret=array();
 
-		/*---- CODIGO ORIGINAL PARA CONEXION MYSQL -------
-		$columns=$recordSet->fetch_fields();
-        foreach($columns as $col) {
-            $columnDescr=array();
-            $columnDescr['id']=$col->name;
-            $columnDescr['label']=$col->name;
-            $columnDescr['type']=getTypeName($col->type);
-            $ret['cols'][]=$columnDescr;
-        }
-
-        while($array=$recordSet->fetch_array(MYSQLI_ASSOC)) {
-			$values=array_values($array);
-			$rowData=array();
-			$rowData['c']=array();
-			$col_index = 0;
-			$colType = '';
-			foreach($values as $value) {
-				$colType = $ret['cols'][$col_index]['type'];
-				if ($colType =='number') {
-                    $rowData['c'][]=array("v"=>$value*1);
-                }
-				else if ($colType =='datetime') {
-                    $rowData['c'][]=array("v"=> "Date(".substr($value,0,4).", ".substr($value,5,2).", ".substr($value,8,2).")");
-				}
-                else {
-                    $rowData['c'][]=array("v"=>$value);
-                }
-                $col_index++;
-			}
-			$ret['rows'][]=$rowData;
-		}
-		---- CODIGO ORIGINAL PARA CONEXION MYSQL -------
-		*/
-
-		/*
-		$columns=$recordSet->fetch(PDO::FETCH_ASSOC);
-		foreach($columns as $col) {
-			$columnDescr=array();
-			$columnDescr['id']=$col->name;
-			$columnDescr['label']=$col->name;
-			$columnDescr['type']=getTypeName($col->type);
-			$ret['cols'][]=$columnDescr;
-		}
-		*/
-
 		while($array=$recordSet->fetch(PDO::FETCH_ASSOC)) {
 
 			if(empty($columns)) {
@@ -177,6 +132,55 @@
 		//read model from a file and return in response
 		$model = file_get_contents(config::$MODEL_FILE_JSON);
 		echo $model;
+	}
+	else if ($action == 'loadQuery') {
+
+		//get query name
+		$data = json_decode(file_get_contents('php://input'), true);
+
+		$query_json = json_encode($data['query']);
+
+		$query_name = $data['id'];
+
+		//read query from a file and return in response
+		$query_file_name = $query_name.".json";
+		$query_json = file_get_contents($query_file_name);
+
+		echo $query_json;
+	}
+	else if ($action == 'saveQuery') {
+
+/*
+		//get query in json format
+		$data = json_decode(file_get_contents('php://input'), true);
+
+		//get query name
+		//$query_name = $data['query']['id'];
+
+		$query_name = 'query';
+
+		$query_json = json_encode($data['query']);
+		//save query to a file
+		$query_file_name = $query_name.".json";
+		file_put_contents($query_file_name, $query_json);
+
+		echo '{"result":"OK"}';
+   */
+
+		$data = json_decode(file_get_contents('php://input'), true);
+
+		$file='query.json';
+        $query_json = json_encode($data['query']);
+        file_put_contents($file, $query_json);
+
+		include 'opJson.php';
+		saveQuery($file);
+
+	    // delete file
+        //unlink($file);
+
+		//echo '{"result":"OK"}';
+
 	}
 	else if ($action == 'syncQuery') {
 		//return generated SQL to show it on our demo web-page. Not necessary to do in production!

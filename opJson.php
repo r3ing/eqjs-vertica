@@ -478,6 +478,25 @@ function createQuery($colums, $conditions, $tables){
     return $query;
 }
 
+function saveQuery($file){
+
+   if (file_exists($file)) {
+       echo '123';
+        /*
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename($file).'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        readfile($file);
+       exit;
+       */
+    }
+
+}
+
 /*Verificar
  -TRUE - FALSE en DataBase 0 or 1, True or False
  -Formato FECHAS en DataBase "Y/m/d", "Y.m.d", "Y-m-d"
