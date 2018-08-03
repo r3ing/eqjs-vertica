@@ -169,10 +169,25 @@
                 <hr class="menu-hr hr" />
                 <div class="menu-title">Menú</div>
                 <div class="menu-content">
+                    <!--
                     <div id="ClearQueryButton" class="eqv-button clear-button">Clear query</div>
                     <div id="LoadQueryButton" class="eqv-button load-query-button">Load query</div>
                     <div id="SaveQueryButton" class="eqv-button save-query-button">Save query</div>
                     <div id="ExecuteQueryButton" class="eqv-button execute-button">Execute</div>
+                    -->
+                    <div id="ClearQueryButton" class="eqv-button clear-button">Limpiar Query</div>
+                    <br><br>
+
+                    <div id="SaveQueryButton" class="eqv-button save-query-button">Guardar Query</div>
+                    <a href="LastQuery.json" class="eqv-button save-query-button" target="_blank" download>Descargar Query</a>
+                    <br><br>
+
+                    <div id="LoadQueryButton" class="eqv-button load-query-button">Ver Query</div>
+                    <iframe src="upload.html" frameborder="0" scrolling="no" height="50" width="200"></iframe>
+
+
+                    <div id="ExecuteQueryButton" class="eqv-button execute-button">Ejecutar</div>
+
                 </div>
 
 

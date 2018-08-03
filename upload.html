@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="libs/eqjs/css/easyquery.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="libs/eqjs/css/eq-icons-default.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="libs/eqjs/css/eqview.css" rel="stylesheet" type="text/css" />
+    <link href="libs/eqjs/css/easychart.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<form action="file.php" enctype="multipart/form-data" id="LoadQueryForm" method="post">
+    <input type="file" id="LoadQueryFileInput" name="queryFile" style="display: none;" />
+    <input type="submit" style="display: none;" />
+</form>
+<div id="LoadQueryFileButton" class="eqv-button load-query-button" style="margin-left: 0px; !important;">Cargar Query</div>
+
+<script src="jquery-2.2.4.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+        $('#LoadQueryFileInput').change(function () {
+            $('#LoadQueryForm').submit();
+        });
+
+        $('#LoadQueryFileButton').click(function () {
+            $('#LoadQueryFileInput').click();
+        });
+
+        var message = '';
+        if (message) {
+            $('.global-message').show().delay(5000).hide(2000);
+        }
+    });
+
+
+</script>
+</body>
+</html>

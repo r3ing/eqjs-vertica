@@ -150,7 +150,6 @@
 	}
 	else if ($action == 'saveQuery') {
 
-/*
 		//get query in json format
 		$data = json_decode(file_get_contents('php://input'), true);
 
@@ -165,21 +164,6 @@
 		file_put_contents($query_file_name, $query_json);
 
 		echo '{"result":"OK"}';
-   */
-
-		$data = json_decode(file_get_contents('php://input'), true);
-
-		$file='query.json';
-        $query_json = json_encode($data['query']);
-        file_put_contents($file, $query_json);
-
-		include 'opJson.php';
-		saveQuery($file);
-
-	    // delete file
-        //unlink($file);
-
-		//echo '{"result":"OK"}';
 
 	}
 	else if ($action == 'syncQuery') {
