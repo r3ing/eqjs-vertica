@@ -67,7 +67,7 @@
 					$rowData['c'][]=array("v"=> "Date(".substr($value,0,4).", ".substr($value,5,2).", ".substr($value,8,2).")");
 				}
 				else {
-					$rowData['c'][]=array("v"=>$value);
+					$rowData['c'][]=array("v"=>utf8_encode($value));
 				}
 				$col_index++;
 			}
